@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
@@ -15,7 +16,12 @@ namespace FApp
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    webBuilder.UseStartup<Startup>(); 
+                    var port = Environment.GetEnvironmentVariable("PORT");
+                    if (!string.IsNullOrEmpty(port))
+                    {
+                        webBuilder.UseUrls("https://*:" + port);
+                    }
                 });
     }
 }
