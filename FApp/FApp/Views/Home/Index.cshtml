@@ -1,0 +1,93 @@
+﻿@using System.Linq
+@model IEnumerable<UserModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="">
+    <div class="">
+        <table class="table">
+            <thead>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td colspan="3">
+                        <div class="d-inline-flex float-right">
+                            <button onclick="unlockAction()"
+                                    type="button"
+                                    id="unlockBtn"
+                                    class="btn btn-circle mr-3 d-flex justify-content-center align-items-center"
+                                    data-toggle="tooltip"
+                                    title="unlock">
+                                <img class="align-content-center" src="~/lock.png" alt="Alternate Text" />
+                            </button>
+                            <button onclick="lockAction()"
+                                    type="button"
+                                    id="lockBtn"
+                                    class="btn btn-circle mr-3 d-flex justify-content-center align-items-center"
+                                    data-toggle="tooltip"
+                                    title="block">
+                                <img class="align-content-center" src="~/block.png" alt="Alternate Text" />
+                            </button>
+                            <button onclick="deleteAction()"
+                                    type="button"
+                                    class="btn btn-circle mr-3 d-flex justify-content-center align-items-center"
+                                    data-toggle="tooltip"
+                                    id="delBtn"
+                                    title="delete">
+                                <img class="" src="~/remove.png" alt="" />
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox"
+                               name="groupCheck"
+                               onchange="handler(this)" />
+                    </td>
+                    <td>
+                        @Html.LabelFor(x => x.First().Id)
+                    </td>
+                    <td>
+                        @Html.LabelFor(x => x.First().Email)
+                    </td>
+                    <td>
+                        @Html.LabelFor(x => x.First().UserName)
+                    </td>
+                    <td>
+                        @Html.LabelFor(x => x.First().CreateDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(x => x.First().LastLogin)
+                    </td>
+
+                    <td>
+                        @Html.DisplayText("Status")
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var m in Model)
+                {
+                    <partial name="_UserListItemView" model="m" />
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="js/mjs.js"></script>
+
+<style>
+    .user-item-form {
+    }
+
+    .btn-circle {
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+    }
+</style>

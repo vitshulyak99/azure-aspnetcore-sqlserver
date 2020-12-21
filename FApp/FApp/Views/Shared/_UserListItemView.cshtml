@@ -1,0 +1,33 @@
+﻿@model FApp.Models.UserModel
+
+<tr>
+    <td>
+        <form class="user-item-form">
+            <input type="checkbox" name="checkbox" />
+            <input name="itemId" value="@Model.Id" hidden />
+        </form>
+    </td>
+    <td class="col">
+        <span>@Html.DisplayTextFor(x => x.Id)</span>
+    </td>
+    <td class="col">
+        <span>@Html.DisplayTextFor(x => x.Email)</span>
+    </td>
+    <td class="col">
+        <span>@Html.DisplayTextFor(x => x.UserName)</span>
+    </td>
+    <td class="col">
+        <span>@Html.DisplayTextFor(x => x.CreateDate)</span>
+    </td>
+    <td class="col">
+        <span>@Html.DisplayTextFor(x => x.LastLogin)</span>
+    </td>
+    <td class="col">
+        <span id=@( $"{Model.Id}-status" )>@( Model.IsBlocked ? "Blocked" : "Active" )</span>
+    </td>
+</tr>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
