@@ -6,4 +6,4 @@ setup:
     S3_BUCKET: my-example-bucket
 build:
   docker:
-    web: Dockerfile
+    web: "FApp/Dockerfile"
