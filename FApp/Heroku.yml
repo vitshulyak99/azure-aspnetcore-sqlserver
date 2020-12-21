@@ -1,0 +1,9 @@
+setup:
+   addons:
+    - plan: heroku-postgresql/hobby-dev
+      as: DATABASE
+   config:
+    S3_BUCKET: my-example-bucket
+build:
+  docker:
+    fapp: Dockerfile
