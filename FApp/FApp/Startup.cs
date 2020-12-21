@@ -35,7 +35,7 @@ namespace FApp
             services.AddDbContext<AppDbContext>(opt =>
             {
                 var constr = Configuration.GetConnectionString("DefaultConnection");
-                opt.UseNpgsql(constr);
+                opt.UseSqlServer(constr);
             });
             services.AddIdentity<User, IdentityRole>(opt =>
                 {
